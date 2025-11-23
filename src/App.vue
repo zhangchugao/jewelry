@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
 import Navbar from './components/Navbar.vue';
+import BackToTop from './components/BackToTop.vue';
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import Navbar from './components/Navbar.vue';
     <main>
       <RouterView />
     </main>
+    <BackToTop />
   </div>
 </template>
 

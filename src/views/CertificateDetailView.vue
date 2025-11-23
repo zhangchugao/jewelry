@@ -132,7 +132,7 @@
       </div>
       
       <!-- 返回按钮 -->
-      <router-link to="/" class="back-button">Return to Home</router-link>
+      <router-link to="/" class="back-button">← Return to Home</router-link>
     </div>
   </div>
 </template>
@@ -335,20 +335,22 @@ onMounted(() => {
 /* 返回按钮 */
 .back-button {
   display: inline-block;
-  padding: 0.8rem 2rem;
-  background-color: #333;
-  color: #fff;
+  padding: 0.8rem 1.5rem;
+  background-color: #f8f8f8;
+  color: #666;
   text-decoration: none;
   text-align: center;
   font-weight: 500;
-  border: none;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .back-button:hover {
-  background-color: #555;
+  background-color: #e0e0e0;
+  color: #333;
+  transform: translateX(-3px);
 }
 
 /* 响应式设计 */

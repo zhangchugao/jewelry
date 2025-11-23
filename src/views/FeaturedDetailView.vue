@@ -47,7 +47,7 @@
     <!-- 返回按钮 -->
     <div class="back-button-container">
       <button @click="goBack" class="back-button">
-        Back to Featured List
+        ← Back to Featured List
       </button>
     </div>
   </div>
@@ -274,28 +274,26 @@ const goBack = () => {
 /* 返回按钮 */
 .back-button-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 3rem;
 }
 
 .back-button {
-  padding: 0.8rem 1.8rem;
+  padding: 0.8rem 1.5rem;
   font-size: 1rem;
-  color: #000;
-  background-color: transparent;
-  border: 2px solid #000;
+  color: #666;
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  text-transform: uppercase;
   font-weight: 500;
 }
 
 .back-button:hover {
-  background-color: #000;
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #e0e0e0;
+  color: #333;
+  transform: translateX(-3px);
 }
 
 /* 动画效果 */
