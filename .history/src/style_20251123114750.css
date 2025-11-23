@@ -1,0 +1,99 @@
+/* 全局变量 */
+:root {
+  --primary-color: #8b7d6b;
+  --secondary-color: #333;
+  --text-color: #333;
+  --light-text: #666;
+  --background-color: #fff;
+  --border-color: #e0e0e0;
+  --font-main: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* 重置样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* 响应式断点 */
+@media (max-width: 768px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+/* H5设备优化 */
+/* 防止双击缩放 */
+* {
+  touch-action: manipulation;
+}
+
+/* 优化触摸目标大小 */
+button, a, input[type="button"], input[type="submit"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 滚动优化 */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 防止内容被底部安全区域遮挡（iPhone等设备） */
+@media (max-width: 768px) {
+  .certificate-section {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
+  }
+  
+  .mobile-nav {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* 横屏模式优化 */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .banner {
+    height: 80vh;
+  }
+  
+  .certificate-section {
+    padding: 2rem 1rem;
+  }
+}
