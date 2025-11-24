@@ -1,12 +1,9 @@
 <template>
   <div class="about">
-    <!-- 实验室图片 -->
-    <div class="lab-image-container">
-      <!-- 使用内联SVG作为背景图片，确保高质量显示 -->
-      <div class="lab-image-overlay">
-        <div class="lab-image-text">
-          <h2 class="lab-title">GRA Gemological Laboratory</h2>
-        </div>
+    <!-- 钻石图片横幅 -->
+    <div class="news-banner">
+      <div class="banner-image">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
       </div>
     </div>
     
@@ -35,98 +32,42 @@
   position: relative;
 }
 
-/* 实验室图片样式 */
-.lab-image-container {
+/* 横幅样式 */
+.news-banner {
   width: 100%;
-  height: 40vh;
-  position: relative;
+  height: 300px;
   overflow: hidden;
-  margin: 0;
-  touch-action: pan-y;
-  /* 使用实验室相关的内联SVG作为背景 */
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzJhMjAzNiIgZmlsbC1vcGFjaXR5PSIwLjg1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjYwJSIgZmlsbD0icmdiYSgzNCwgNDQsIDY5LCAwLjIpIi8+CiAgPHJlY3QgeD0iMzAiIHk9IjIwIiB3aWR0aD0iNDAiIGhlaWdodD0iMzAiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4zKSIvPgogIDxwYXRoIGQ9Ik0zNSAzNWgyMHYxMGgtMjB6bTAgMTVoMjB2MTBoLTIweiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjUpIi8+CiAgPHJlY3QgeD0iNDAiIHk9IjIwIiB3aWR0aD0iMjAlIiBoZWlnaHQ9IjEwJSIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgiLz4KICA8cGF0aCBkPSJNMzAgNzBtNSAwbDEwLTEwbDEwIDEwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMC41Ii8+Cjwvc3ZnPg==');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.lab-image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-.lab-image-text {
-  text-align: center;
-}
-
-.lab-title {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-transform: uppercase;
   position: relative;
-  padding: 0 2rem;
-  animation: slideIn 1s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.lab-title::before,
-.lab-title::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 80px;
-  height: 1px;
-  background-color: #fff;
+.banner-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.lab-title::before {
-  left: 0;
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.lab-title::after {
-  right: 0;
+.banner-img:hover {
+  transform: scale(1.02);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .lab-image-container {
-    height: 35vh;
-  }
-  
-  .lab-title {
-    font-size: 1.6rem;
-    padding: 0 1.5rem;
-  }
-  
-  .lab-title::before,
-  .lab-title::after {
-    width: 50px;
+  .news-banner {
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
-  .lab-image-container {
-    height: 30vh;
-  }
-  
-  .lab-title {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    padding: 0 1rem;
-  }
-  
-  .lab-title::before,
-  .lab-title::after {
-    width: 30px;
+  .news-banner {
+    height: 150px;
   }
 }
 

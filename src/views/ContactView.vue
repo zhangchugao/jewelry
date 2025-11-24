@@ -1,8 +1,10 @@
 <template>
   <div class="contact">
-    <!-- 实验室图片横幅 -->
-    <div class="banner">
-      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjMwMCI+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjZjhmOGY4Ii8+CiAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI1MCIgZmlsbD0iI2ZmZiIvPgogIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iMzAiIGZpbGw9IiNmZmYiLz4KICA8Y2lyY2xlIGN4PSIzMDAiIGN5PSIxMjAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+CiAgPGNpcmNsZSBjeD0iNTAwIiBjeT0iMTUwIiByPSI2MCIgZmlsbD0iI2ZmZiIvPgogIDxjaXJjbGUgY3g9IjYwMCIgY3k9IjEwMCIgcj0iMjAiIGZpbGw9IiNmZmYiLz4KICA8Y2lyY2xlIGN4PSI3MDAiIGN5PSIxODAiIHI9IjQwIiBmaWxsPSIjZmZmIi8+CiAgPGNpcmNsZSBjeD0iODAwIiBjeT0iMTUwIiByPSI1MCIgZmlsbD0iI2ZmZiIvPgogIDxjaXJjbGUgY3g9IjkwMCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9IiNmZmYiLz4KICA8dGV4dCB4PSI1MDAiIHk9IjI1MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjIwIiBmaWxsPSIjMDAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5MYWJlbCBMYWJlbCBUb29sczwvdGV4dD4KPC9zdmc+" alt="Laboratory" class="banner-img">
+    <!-- 钻石图片横幅 -->
+    <div class="news-banner">
+      <div class="banner-image">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
+      </div>
     </div>
 
     <!-- 联系信息部分 -->
@@ -72,19 +74,31 @@
   overflow-x: hidden;
 }
 
-/* 实验室图片横幅 */
-.banner {
+/* 横幅样式 */
+.news-banner {
   width: 100%;
   height: 300px;
   overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 3rem;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.02);
 }
 
 /* 联系信息容器 */
@@ -173,8 +187,8 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .banner {
-    height: 200px;
+  .news-banner {
+    height: 250px;
     margin-bottom: 2rem;
   }
   
@@ -206,8 +220,8 @@
 }
 
 @media (max-width: 480px) {
-  .banner {
-    height: 180px;
+  .news-banner {
+    height: 150px;
     margin-bottom: 1.5rem;
   }
   

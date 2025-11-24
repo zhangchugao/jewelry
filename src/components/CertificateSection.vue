@@ -31,8 +31,8 @@
           placeholder="Enter certificate number"
           required
         />
-        <button type="submit" class="certificate-button">
-          Certificate of the query
+        <button type="submit" class="certificate-button" :disabled="isLoading">
+          {{ isLoading ? 'Querying...' : 'Certificate of the query' }}
         </button>
       </form>
       
@@ -59,21 +59,27 @@ const router = useRouter();
 const certificateNumber = ref('');
 const showResult = ref(false);
 const resultFound = ref(false);
+const isLoading = ref(false);
 
 const handleSubmit = () => {
   const reportNumber = certificateNumber.value.trim();
   resultFound.value = reportNumber !== '';
   
   if (resultFound.value) {
+    // 设置loading状态为true，禁用按钮
+    isLoading.value = true;
     // 调用接口查询证书详情
-    restApi.queryCertificate(reportNumber).then(res => {
-      // 查询成功，跳转到证书详情页
+    restApi.queryCertificate(reportNumber).then((res: any) => {
+     // 查询成功，跳转到证书详情页
       router.push({
         name: 'certificateDetail',
-        params: { reportNumber }
+        params: { certificateNumber:reportNumber }
       });
-    }).catch(err => {
-      alert('Query certificate number does not exist')
+    }).catch((err: any) => {
+      alert('Query certificate number does not exist');
+    }).finally(() => {
+      // 请求结束，恢复按钮状态
+      isLoading.value = false;
     })
   } else {
     // 查询失败，显示错误信息

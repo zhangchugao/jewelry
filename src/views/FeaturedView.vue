@@ -1,5 +1,12 @@
 <template>
   <div class="featured">
+    <!-- 钻石图片横幅 -->
+    <div class="news-banner">
+      <div class="banner-image">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
+      </div>
+    </div>
+    
     <!-- 面包屑导航 -->
     <div class="breadcrumb">
       <span>Your current location:</span>
@@ -11,70 +18,17 @@
 
     <!-- 宝石展示网格 -->
     <div class="gem-grid">
-      <!-- 第一行宝石 -->
-      <div class="gem-item" @click="navigateToGemDetail('1')">
+      <div 
+        v-for="gem in gems" 
+        :key="gem.id" 
+        class="gem-item" 
+        @click="navigateToGemDetail(gem.id)"
+      >
         <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iI2VjYTllNCIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Kunzite" class="gem-img">
+          <img :src="gem.imageUrl" :alt="gem.name" class="gem-img">
         </div>
-        <h3 class="gem-name">Kunzite</h3>
-        <p class="gem-description">Kunzite is the best-known variety of the mineral spodumene. It's named after...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('2')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iIzM3YjZhZSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Aquamarine" class="gem-img">
-        </div>
-        <h3 class="gem-name">AQUAMARINE</h3>
-        <p class="gem-description">Aquamarine's name comes from the Latin seawater. It was said to calm waves...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('3')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iIzE5NzQwMCIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Emerald" class="gem-img">
-        </div>
-        <h3 class="gem-name">EMERALD</h3>
-        <p class="gem-description">Gem experts differ on the degree of green that makes one stone an emerald anoth...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('4')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iI2Y0ODAzMiIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Citrine" class="gem-img">
-        </div>
-        <h3 class="gem-name">Citrine</h3>
-        <p class="gem-description">Citrine is rare in nature. In the days before modern gemology, its tawny col cause...</p>
-      </div>
-
-      <!-- 第二行宝石 -->
-      <div class="gem-item" @click="navigateToGemDetail('5')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iIzM0NDRmOSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Blue Sapphire" class="gem-img">
-        </div>
-        <h3 class="gem-name">Blue Sapphire</h3>
-        <p class="gem-description">Blue sapphires are perhaps the most sought-after of all sapphire varieties, known...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('6')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iI2RkNTlkYSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Pink Sapphire" class="gem-img">
-        </div>
-        <h3 class="gem-name">Pink Sapphire</h3>
-        <p class="gem-description">Pink sapphires range from delicate pastel to vivid hot pink, with the most valuable...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('7')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iIzM2MjMxYSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Green Garnet" class="gem-img">
-        </div>
-        <h3 class="gem-name">Green Garnet</h3>
-        <p class="gem-description">Green garnets come in several varieties, with tsavorite being the most famous and...</p>
-      </div>
-
-      <div class="gem-item" @click="navigateToGemDetail('8')">
-        <div class="gem-image">
-          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0gMTAwLDAgTDIwMCwxMDAgTDEwMCwyMDAgTDAxMDAgWiIgZmlsbD0iIzVlMWJhYSIvPgogICAgPC9wYXR0ZXJuPgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNncmlkKSIvPgo8L3N2Zz4=" alt="Spessartite" class="gem-img">
-        </div>
-        <h3 class="gem-name">Spessartite</h3>
-        <p class="gem-description">Spessartite is a rare orange to reddish-orange garnet that gets its name from the...</p>
+        <h3 class="gem-name">{{ gem.name }}</h3>
+        <p class="gem-description">{{ gem.description }}</p>
       </div>
     </div>
   </div>
@@ -82,6 +36,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import { gems } from '@/utils/common';
 
 const router = useRouter();
 
@@ -96,6 +51,32 @@ const navigateToGemDetail = (id: string) => {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
+}
+
+/* 横幅样式 */
+.news-banner {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.02);
 }
 
 /* 面包屑导航 */
@@ -171,6 +152,13 @@ const navigateToGemDetail = (id: string) => {
   font-size: 0.95rem;
   line-height: 1.5;
   max-width: 200px;
+  /* 最多显示三行，超出部分省略号 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
 }
 
 /* 响应式设计 */
@@ -182,6 +170,10 @@ const navigateToGemDetail = (id: string) => {
 }
 
 @media (max-width: 768px) {
+  .news-banner {
+    height: 250px;
+  }
+  
   .gem-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
@@ -199,6 +191,10 @@ const navigateToGemDetail = (id: string) => {
 }
 
 @media (max-width: 480px) {
+  .news-banner {
+    height: 150px;
+  }
+  
   .gem-grid {
     grid-template-columns: 1fr;
     gap: 2rem;

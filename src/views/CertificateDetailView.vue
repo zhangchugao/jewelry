@@ -12,18 +12,18 @@
     <!-- 证书详情卡片 -->
     <div class="certificate-card">
       <!-- 顶部标题区域 -->
-      <div class="certificate-header">
+      <!-- <div class="certificate-header">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiPgo8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjZDRhZjM3Ii8+CjxwYXRoIGQ9Ik0xMCAzMGgyMHYxMGgtMjB6TTQgMTVoNnYyaC02ek0xMiAxNWg2djJoLTZ6TTIwIDE1aDZ2MmgtNnoiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg==" alt="GRA Logo" class="gra-logo">
         <h1 class="certificate-title-main">GLOBAL GEMOLOGICAL RESEARCH ASSOCIATION</h1>
         <div class="certificate-badge">
           <span class="badge-text">OFFICIAL CERTIFICATE</span>
         </div>
-      </div>
+      </div> -->
       
       <!-- 钻石图片 -->
-      <div class="diamond-image-container">
+      <!-- <div class="diamond-image-container">
         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2ZiZmJmYiIvPgogIDxwYXRoIGQ9Ik0yMDAgMzBjLTIwIDAtMzAgMTAtMzAgMzBzMTAgMzAgMzAgMzAgMzAtMTAgMzAtMzAtMTAtMzAtMzAtMzB6IiBzdHJva2U9IiNmZjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbC1vcGFjaXR5PSIwLjIiLz4KICA8cGF0aCBkPSJNMjAwIDMwdi0xNGMwLTEwLTggLTIwLTIwIC0yMHoiIHN0cm9rZT0iI2ZmMTAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHJlY3QgZmlsbD0iI2ZmZiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjEwMCIgeD0iMTkwIiB5PSI2MCIvPgogIDxwYXRoIGQ9Ik0xMjAgMTQwTDIwMCA2MCwyODAgMTQwTDIwMCAyMjAiIHN0cm9rZT0iIzg4ODg4OCIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==" alt="Diamond" class="diamond-image">
-      </div>
+      </div> -->
       
       <!-- 查询编号 -->
       <div class="query-number">
@@ -38,27 +38,27 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">GRA Report Number:</span>
-              <span class="info-value">{{ certificateNumber }}</span>
+              <span class="info-value">{{ gemstoneInfo.reportNum }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">GRA Laboratory Area:</span>
-              <span class="info-value">U.S.A</span>
+              <span class="info-value">{{ gemstoneInfo.area }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Description:</span>
-              <span class="info-value">MOSANITE</span>
+              <span class="info-value">{{ gemstoneInfo.description }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Shape and Cut:</span>
-              <span class="info-value">ROUND BRILLIANT</span>
+              <span class="info-value">{{ gemstoneInfo.shapeAndCut }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Weight:</span>
-              <span class="info-value">1.0ct</span>
+              <span class="info-value">{{ gemstoneInfo.weight }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Measurements:</span>
-              <span class="info-value">6.5mm</span>
+              <span class="info-value">{{ gemstoneInfo.measurements }}</span>
             </div>
           </div>
         </div>
@@ -69,15 +69,15 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">Color Grade:</span>
-              <span class="info-value">D</span>
+              <span class="info-value">{{ gemstoneInfo.colorGrade }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Clarity Grade:</span>
-              <span class="info-value">VVS1</span>
+              <span class="info-value">{{ gemstoneInfo.clarityGrade }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Cut Grade:</span>
-              <span class="info-value">Excellent</span>
+              <span class="info-value">{{ gemstoneInfo.cutGrade }}</span>
             </div>
           </div>
         </div>
@@ -88,19 +88,19 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">Depth:</span>
-              <span class="info-value">62.3%</span>
+              <span class="info-value">{{ gemstoneInfo.proportionsDepth }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Table:</span>
-              <span class="info-value">58%</span>
+              <span class="info-value">{{ gemstoneInfo.proportionsTable }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Girdle:</span>
-              <span class="info-value">3%</span>
+              <span class="info-value">{{ gemstoneInfo.proportionsGirdle }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Culet:</span>
-              <span class="info-value">None</span>
+              <span class="info-value">{{ gemstoneInfo.proportionsCulet }}</span>
             </div>
           </div>
         </div>
@@ -111,15 +111,15 @@
           <div class="info-grid">
             <div class="info-item">
               <span class="info-label">Polish:</span>
-              <span class="info-value">Excellent</span>
+              <span class="info-value">{{ gemstoneInfo.polish }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Symmetry:</span>
-              <span class="info-value">Excellent</span>
+              <span class="info-value">{{ gemstoneInfo.symmetry }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Fluorescence:</span>
-              <span class="info-value">None</span>
+              <span class="info-value">{{ gemstoneInfo.fluorescence }}</span>
             </div>
           </div>
         </div>
@@ -140,15 +140,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { restApi } from '@/api/restApi';
+import { GemstoneInfo } from '@/types/index';
+
+
 
 const route = useRoute();
 const certificateNumber = ref('');
 const currentDate = ref('');
 
+/** 珠宝信息 */
+const gemstoneInfo = ref<GemstoneInfo>({} as GemstoneInfo);
+
 onMounted(() => {
   // 从路由参数中获取证书编号
   certificateNumber.value = route.params.certificateNumber as string || '2023064466';
-  
+  getCertificateDetail()
   // 设置当前日期
   const today = new Date();
   currentDate.value = today.toLocaleDateString('en-US', { 
@@ -157,6 +164,16 @@ onMounted(() => {
     day: 'numeric' 
   });
 });
+
+/** 获取证书详情*/
+const getCertificateDetail = async () => {
+  restApi.queryCertificate(certificateNumber.value).then((res: any) => {
+    if (res && res.gemstoneInfo) {
+      console.log(res.gemstoneInfo)
+      gemstoneInfo.value = Array.isArray(res.gemstoneInfo) ? res.gemstoneInfo[0] : res.gemstoneInfo;
+    }
+  })
+};
 </script>
 
 <style scoped>
@@ -296,16 +313,18 @@ onMounted(() => {
 }
 
 .info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
 .info-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
+  align-items: center;
+  padding: 0.8rem 0;
   border-bottom: 1px solid #f0f0f0;
+  flex-wrap: wrap;
 }
 
 .info-label {
