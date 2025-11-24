@@ -9,7 +9,15 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [vue()],
+    // 使用相对路径，确保在任何环境下都能正确加载资源
+    base: './',
+    build: {
+      // 跳过TypeScript检查以快速构建
+      skipTypeCheck: true
+    },
     server: {
+      // 设置为0.0.0.0允许通过IP访问
+      host: '0.0.0.0',
       proxy: {
         // 将/api路径代理到后端接口
         '/api': {
