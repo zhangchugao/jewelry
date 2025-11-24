@@ -8,7 +8,7 @@ const http: AxiosInstance = axios.create({
     : '/api', // 开发环境使用代理，生产环境直接使用API地址
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json;charset=utf-8'
+    // 'Content-Type': 'application/json;charset=utf-8'
   }
 });
 

@@ -51,6 +51,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { restApi } from '@/api/restApi';
+
+
 
 const router = useRouter();
 const certificateNumber = ref('');
@@ -58,28 +61,27 @@ const showResult = ref(false);
 const resultFound = ref(false);
 
 const handleSubmit = () => {
-  // 模拟查询操作
-  // 在实际项目中，这里应该调用API进行证书验证
-  
-  // 简单模拟：如果输入不为空就认为找到了证书
-  resultFound.value = certificateNumber.value.trim() !== '';
-
-  // alert('Query certificate number does not exist')
-  // return
+  const reportNumber = certificateNumber.value.trim();
+  resultFound.value = reportNumber !== '';
   
   if (resultFound.value) {
-    // 查询成功，跳转到证书详情页
-    router.push({
-      name: 'certificateDetail',
-      params: { certificateNumber: certificateNumber.value.trim() }
-    });
+    // 调用接口查询证书详情
+    restApi.queryCertificate(reportNumber).then(res => {
+      // 查询成功，跳转到证书详情页
+      router.push({
+        name: 'certificateDetail',
+        params: { reportNumber }
+      });
+    }).catch(err => {
+      alert('Query certificate number does not exist')
+    })
   } else {
     // 查询失败，显示错误信息
     showResult.value = true;
   }
 };
 
-const resetForm = () => {
+const resetForm = async () => {
   certificateNumber.value = '';
   showResult.value = false;
   resultFound.value = false;

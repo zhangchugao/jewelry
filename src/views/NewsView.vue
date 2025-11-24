@@ -205,7 +205,7 @@ const navigateToNewsDetail = (id: number) => {
 .news-item {
   display: flex;
   gap: 2rem;
-  padding-bottom: 2rem;
+  /* padding-bottom: 2rem; */
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
