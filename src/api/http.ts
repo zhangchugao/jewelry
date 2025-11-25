@@ -32,8 +32,11 @@ http.interceptors.request.use(
 http.interceptors.response.use(
   (response: AxiosResponse) => {
     // 这里可以根据后端返回的数据结构进行统一处理
-    const { data } = response;
-    return data;
+    const { data }: any = response;
+    if (data.errorCode) {
+      return Promise.reject(data.errorMsg);
+    }
+    return data.data || data;
   },
   (error) => {
     console.error('响应错误:', error);

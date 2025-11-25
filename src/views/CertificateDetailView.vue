@@ -168,9 +168,8 @@ onMounted(() => {
 /** 获取证书详情*/
 const getCertificateDetail = async () => {
   restApi.queryCertificate(certificateNumber.value).then((res: any) => {
-    if (res && res.gemstoneInfo) {
-      console.log(res.gemstoneInfo)
-      gemstoneInfo.value = Array.isArray(res.gemstoneInfo) ? res.gemstoneInfo[0] : res.gemstoneInfo;
+    if (res && res.result) {
+      gemstoneInfo.value = Array.isArray(res.result) ? res.result[0] : res.result;
     }
   })
 };
