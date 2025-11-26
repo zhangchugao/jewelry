@@ -84,8 +84,15 @@ export const getBannerImages = (): string[] => {
     "jewelry6.png"
   ];
   
-  // 返回所有图片的完整路径
-  return bannerImages.map(image => `/src/assets/img/${image}`);
+  // 使用new URL()确保Vite能正确打包图片资源
+  return bannerImages.map(image => {
+    try {
+      return new URL(`/src/assets/img/${image}`, import.meta.url).href;
+    } catch (error) {
+      console.error(`Error loading image ${image}:`, error);
+      return `/src/assets/img/${image}`; // 回退到原始路径
+    }
+  });
 };
 
 // 获取固定的顶部背景图
@@ -128,5 +135,11 @@ export const getRandomBannerImage = (pageType?: string): string => {
       imageIndex = 0; // 默认使用第一张图片
   }
   
-  return `/src/assets/img/${bannerImages[imageIndex]}`;
+  // 使用new URL()确保Vite能正确打包图片资源
+  try {
+    return new URL(`/src/assets/img/${bannerImages[imageIndex]}`, import.meta.url).href;
+  } catch (error) {
+    console.error(`Error loading image ${bannerImages[imageIndex]}:`, error);
+    return `/src/assets/img/${bannerImages[imageIndex]}`; // 回退到原始路径
+  }
 };

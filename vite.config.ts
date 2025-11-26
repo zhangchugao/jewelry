@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
+import viteCompression from 'vite-plugin-compression'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -8,7 +9,18 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
   
   return {
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      // gzip压缩配置
+      viteCompression({
+        verbose: true, // 输出压缩结果
+        disable: false, // 不禁用压缩
+        threshold: 10240, // 只有大小超过该值的资源会被压缩
+        algorithm: 'gzip', // 压缩算法
+        ext: '.gz', // 压缩后缀
+        deleteOriginFile: false // 不删除原始文件
+      })
+    ],
     // 使用相对路径，确保在任何环境下都能正确加载资源
     base: './',
     build: {
