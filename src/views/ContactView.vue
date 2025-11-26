@@ -28,34 +28,17 @@
         <!-- 二维码 -->
         <div class="qrcode-container">
           <div class="qrcode">
-            <!-- 二维码占位图 -->
-            <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-              <rect width="200" height="200" fill="white" stroke="black" stroke-width="1"/>
-              <!-- 左上角方块 -->
-              <rect x="30" y="30" width="40" height="40" fill="black"/>
-              <rect x="40" y="40" width="20" height="20" fill="white"/>
-              <!-- 右上角方块 -->
-              <rect x="130" y="30" width="40" height="40" fill="black"/>
-              <rect x="140" y="40" width="20" height="20" fill="white"/>
-              <!-- 左下角方块 -->
-              <rect x="30" y="130" width="40" height="40" fill="black"/>
-              <rect x="40" y="140" width="20" height="20" fill="white"/>
-              <!-- 中心图案 -->
-              <rect x="100" y="100" width="20" height="20" fill="black"/>
-              <rect x="60" y="80" width="20" height="20" fill="black"/>
-              <rect x="120" y="80" width="20" height="20" fill="black"/>
-              <rect x="60" y="120" width="20" height="20" fill="black"/>
-              <rect x="120" y="120" width="20" height="20" fill="black"/>
-              <rect x="80" y="60" width="20" height="20" fill="black"/>
-              <rect x="120" y="60" width="20" height="20" fill="black"/>
-              <rect x="80" y="140" width="20" height="20" fill="black"/>
-              <rect x="100" y="60" width="20" height="20" fill="black"/>
-              <rect x="100" y="140" width="20" height="20" fill="black"/>
-              <rect x="60" y="100" width="20" height="20" fill="black"/>
-              <rect x="140" y="100" width="20" height="20" fill="black"/>
-              <!-- 中心徽标 -->
-              <circle cx="100" cy="100" r="5" fill="gold"/>
-            </svg>
+            <!-- 使用qrcode包生成的二维码，扫描后跳转到网站首页 -->
+            <img 
+              v-if="qrCodeDataUrl" 
+              :src="qrCodeDataUrl" 
+              alt="网站首页二维码" 
+              width="100%" 
+              height="100%" 
+              style="object-fit: contain;" 
+            />
+            <!-- 加载中状态 -->
+            <div v-else class="qr-loading">生成中...</div>
           </div>
         </div>
       </div>
@@ -64,7 +47,28 @@
 </template>
 
 <script setup lang="ts">
-// Contact页面组件
+import { ref, onMounted } from 'vue';
+import QRCode from 'qrcode';
+
+// 二维码数据URL
+const qrCodeDataUrl = ref('');
+
+// 生成二维码
+onMounted(async () => {
+  try {
+    // 生成二维码数据URL，链接到网站首页
+    qrCodeDataUrl.value = await QRCode.toDataURL(window.location.origin, {
+      width: 200,
+      margin: 1,
+      color: {
+        dark: '#000000',
+        light: '#ffffff'
+      }
+    });
+  } catch (error) {
+    console.error('生成二维码失败:', error);
+  }
+});
 </script>
 
 <style scoped>
@@ -178,12 +182,20 @@
 }
 
 .qrcode {
-  width: 200px;
-  height: 200px;
-  border: 1px solid #ddd;
-  background-color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-loading {
+    font-size: 14px;
+    color: #666;
+  }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
