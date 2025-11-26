@@ -1,34 +1,37 @@
 <template>
-  <div class="featured">
-    <!-- 钻石图片横幅 -->
+  <div>
+    <!-- 钻石图片横幅 - 放在容器外部，使其横向填满整个屏幕 -->
     <div class="news-banner">
       <div class="banner-image">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
+        <img :src="bannerImage" alt="Diamonds" class="banner-img">
       </div>
     </div>
     
-    <!-- 面包屑导航 -->
-    <div class="breadcrumb">
-      <span>Your current location:</span>
-      <router-link to="/" class="breadcrumb-link">HOME</router-link>
-      <span class="breadcrumb-separator">></span>
-      <span class="breadcrumb-current">Featured</span>
-      <span class="breadcrumb-separator">></span>
-    </div>
+    <!-- 其他内容放在居中容器内 -->
+    <div class="featured">
+      <!-- 面包屑导航 -->
+      <div class="breadcrumb">
+        <span>Your current location:</span>
+        <router-link to="/" class="breadcrumb-link">HOME</router-link>
+        <span class="breadcrumb-separator">></span>
+        <span class="breadcrumb-current">Featured</span>
+        <span class="breadcrumb-separator">></span>
+      </div>
 
-    <!-- 宝石展示网格 -->
-    <div class="gem-grid">
-      <div 
-        v-for="gem in gems" 
-        :key="gem.id" 
-        class="gem-item" 
-        @click="navigateToGemDetail(gem.id)"
-      >
-        <div class="gem-image">
-          <img :src="gem.imageUrl" :alt="gem.name" class="gem-img">
+      <!-- 宝石展示网格 -->
+      <div class="gem-grid">
+        <div 
+          v-for="gem in gems" 
+          :key="gem.id" 
+          class="gem-item" 
+          @click="navigateToGemDetail(gem.id)"
+        >
+          <div class="gem-image">
+            <img :src="gem.imageUrl" :alt="gem.name" class="gem-img">
+          </div>
+          <h3 class="gem-name">{{ gem.name }}</h3>
+          <p class="gem-description">{{ gem.description }}</p>
         </div>
-        <h3 class="gem-name">{{ gem.name }}</h3>
-        <p class="gem-description">{{ gem.description }}</p>
       </div>
     </div>
   </div>
@@ -36,9 +39,12 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { gems } from '@/utils/common';
+import { gems, getRandomBannerImage } from '@/utils/common';
 
 const router = useRouter();
+
+// 随机获取顶部背景图
+const bannerImage = getRandomBannerImage('featured');
 
 // 跳转到宝石详情页
 const navigateToGemDetail = (id: string) => {

@@ -4,7 +4,7 @@
       <!-- Logo -->
       <div class="logo">
         <router-link to="/">
-          <img src="/vite.ico" alt="GRA Jewelry" class="logo-image" width="40" height="40" />
+          <img src="/vite.ico" alt="GRA Jewelry" class="logo-image" />
           <span class="logo-text" alt="洛普林">LOPRRIN</span>
         </router-link>
       </div>
@@ -72,14 +72,20 @@ const closeMobileMenu = () => {
   display: flex;
   align-items: center;
 }
-
+.logo > a {
+    display: flex;
+    align-items: center;
+}
+.logo-image {
+  width: 40px;
+  height: 40px;
+}
 .logo-text {
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--secondary-color);
   position: relative;
   padding-left: 1rem;
-  vertical-align: top;
 }
 
 

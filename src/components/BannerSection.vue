@@ -1,146 +1,244 @@
 <template>
-  <section class="banner">
-    <div class="banner-image">
-      <!-- 使用内联SVG作为背景图片，确保高质量显示 -->
-      <div class="banner-overlay">
-        <div class="banner-text">
-          <h2 class="exclusive-text">
-            <span class="text-accent">EXCLUSIVE</span> CUSTOM
-          </h2>
-        </div>
+  <div class="banner">
+    <div class="banner-container">
+      <div 
+        v-for="(image, index) in bannerImages" 
+        :key="index"
+        class="banner-image"
+        :class="{ active: currentIndex === index }"
+      >
+        <img :src="image" alt="Jewelry Banner" class="banner-img">
       </div>
+      
+      <!-- 左右切换按钮 -->
+    <button class="banner-btn prev-btn" @click="prevSlide" aria-label="Previous slide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="banner-btn next-btn" @click="nextSlide" aria-label="Next slide">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
     </div>
-  </section>
+    <!-- 轮播指示器 -->
+    <div class="banner-indicators">
+      <div 
+        v-for="(image, index) in bannerImages" 
+        :key="index"
+        class="indicator"
+        :class="{ active: currentIndex === index }"
+        @click="currentIndex = index"
+      ></div>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue';
+import { getBannerImages } from '../utils/common';
+
+// 获取所有轮播图片
+const bannerImages = getBannerImages();
+// 当前显示的图片索引
+const currentIndex = ref(0);
+// 轮播定时器
+let timer: number | null = null;
+
+// 自动轮播函数
+const startCarousel = () => {
+  timer = window.setInterval(() => {
+    currentIndex.value = (currentIndex.value + 1) % bannerImages.length;
+  }, 10000); // 每10秒切换一次
+};
+
+// 上一张幻灯片
+const prevSlide = () => {
+  currentIndex.value = (currentIndex.value - 1 + bannerImages.length) % bannerImages.length;
+};
+
+// 下一张幻灯片
+const nextSlide = () => {
+  currentIndex.value = (currentIndex.value + 1) % bannerImages.length;
+};
+
+// 组件挂载时启动轮播
+onMounted(() => {
+  startCarousel();
+});
+
+// 组件卸载时清除定时器
+onUnmounted(() => {
+  if (timer) {
+    clearInterval(timer);
+  }
+});
+</script>
 
 <style scoped>
 .banner {
   width: 100%;
-  height: 50vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* height: 600px; 设置轮播图高度 */
+}
+
+.banner-container {
+  width: 100%;
+  height: 300px;
   position: relative;
   overflow: hidden;
-  min-height: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .banner-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-container {
+    height: 150px;
+  }
 }
 
 .banner-image {
   width: 100%;
   height: 100%;
-  /* 使用珠宝师检查钻石的图片作为背景 */
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxNzksIDExMCwgNjQsIDAuMikiLz4KICA8cGF0aCBkPSJNNTAgMzBjMC0xMS4wNS04Ljk1LTIwLTIwLTIwdjIwYzExLjA1IDAgMjAgOC45NSAyMCAyMHYtMjB6bTEwIDMwaDF2MWgtMXYtMXptMC0yaDF2MWgtMXYtMXptMC0yaDF2MWgtMXYtMXoiIHN0cm9rZT0iIzg4OGI5NSIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8L3N2Zz4=');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.banner-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to right, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.banner-image.active {
+  opacity: 1;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 轮播指示器样式 */
+.banner-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicator.active {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+}
+
+/* 轮播切换按钮 */
+.banner-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 1.5s ease-in-out;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.banner-btn:hover {
+  background-color: rgba(212, 175, 55, 0.9);
+  color: white;
+  border-color: rgba(212, 175, 55, 0.9);
+  transform: translateY(-50%) scale(1.15);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
 }
 
-.banner-text {
-  text-align: center;
+.banner-btn:active {
+  transform: translateY(-50%) scale(1.05);
 }
 
-.exclusive-text {
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: 300;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  position: relative;
-  padding: 0 2rem;
-  animation: slideIn 1s ease-out;
+.prev-btn {
+  left: 30px;
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.next-btn {
+  right: 30px;
 }
 
-.exclusive-text::before,
-.exclusive-text::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 100px;
-  height: 1px;
-  background-color: #fff;
+/* 优化SVG图标显示 */
+.banner-btn svg {
+  transition: all 0.3s ease;
 }
 
-.exclusive-text::before {
-  left: 0;
-}
-
-.exclusive-text::after {
-  right: 0;
-}
-
-.text-accent {
-  font-weight: 600;
-  color: #d4af37;
+.banner-btn:hover svg {
+  transform: scale(1.1);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .banner {
-    height: 50vh;
-    min-height: 300px;
+  .banner-btn {
+    width: 40px;
+    height: 40px;
   }
   
-  .exclusive-text {
-    font-size: 1.8rem;
-    padding: 0 1rem;
+  .prev-btn {
+    left: 15px;
   }
   
-  .exclusive-text::before,
-  .exclusive-text::after {
-    width: 50px;
+  .next-btn {
+    right: 15px;
+  }
+  
+  .banner-btn svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .banner {
-    height: 40vh;
-    min-height: 250px;
+  .banner-btn {
+    width: 35px;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.3);
   }
   
-  .exclusive-text {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-    padding: 0 0.5rem;
+  .prev-btn {
+    left: 10px;
   }
   
-  .exclusive-text::before,
-  .exclusive-text::after {
-    width: 30px;
+  .next-btn {
+    right: 10px;
+  }
+  
+  .banner-btn svg {
+    width: 16px;
+    height: 16px;
   }
 }
 </style>

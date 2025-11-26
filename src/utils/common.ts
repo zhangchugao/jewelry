@@ -71,3 +71,62 @@ export const gems: Gem[] = [
 export const getGemById = (id: string): Gem | undefined => {
   return gems.find(gem => gem.id === id);
 };
+
+// 获取所有轮播图片
+export const getBannerImages = (): string[] => {
+  // assets/img 目录下的图片文件名
+  const bannerImages = [
+    "jewelry1.png",
+    "jewelry2.png",
+    "jewelry3.png",
+    "jewelry4.png",
+    "jewelry5.png",
+    "jewelry6.png"
+  ];
+  
+  // 返回所有图片的完整路径
+  return bannerImages.map(image => `/src/assets/img/${image}`);
+};
+
+// 获取固定的顶部背景图
+export const getRandomBannerImage = (pageType?: string): string => {
+  // assets/img 目录下的图片文件名
+  const bannerImages = [
+    "jewelry1.png",
+    "jewelry2.png",
+    "jewelry3.png",
+    "jewelry4.png",
+    "jewelry5.png",
+    "jewelry6.png"
+  ];
+  
+  // 根据页面类型返回固定的图片
+  let imageIndex: number;
+  switch (pageType) {
+    case 'home':
+      imageIndex = 0; // 固定使用第一张图片
+      break;
+    case 'featured':
+      imageIndex = 1; // 固定使用第二张图片
+      break;
+    case 'featuredDetail':
+      imageIndex = 2; // 固定使用第三张图片
+      break;
+    case 'about':
+      imageIndex = 3; // 固定使用第四张图片
+      break;
+    case 'news':
+      imageIndex = 4; // 固定使用第五张图片
+      break;
+    case 'newsDetail':
+      imageIndex = 4; // 与news页面使用同一张图片
+      break;
+    case 'contact':
+      imageIndex = 5; // 固定使用第六张图片
+      break;
+    default:
+      imageIndex = 0; // 默认使用第一张图片
+  }
+  
+  return `/src/assets/img/${bannerImages[imageIndex]}`;
+};

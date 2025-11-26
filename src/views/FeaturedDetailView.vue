@@ -1,14 +1,15 @@
 <template>
   <div class="featured-detail">
     <!-- 钻石背景横幅 -->
-    <!-- <div class="diamond-banner">
-      <img 
-        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDEwMCIgd2lkdGg9IjEwMDAiIGhlaWdodD0iMTAwIj4KICA8cmVjdCB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNmZmYiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjEpIi8+CiAgPHJlY3QgeD0iMjUwIiB5PSI0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjIpIi8+CiAgPHJlY3QgeD0iMTUwIiB5PSIzMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjMpIi8+CiAgPHJlY3QgeD0iMTAwIiB5PSI1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjQpIi8+CiAgPHJlY3QgeD0iMjAwIiB5PSIyMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjUpIi8+CiAgPHJlY3QgeD0iMzAwIiB5PSI0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjYpIi8+CiAgPHJlY3QgeD0iNDAwIiB5PSIyMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjcpIi8+CiAgPHJlY3QgeD0iNDUwIiB5PSI1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjgpIi8+CiAgPHJlY3QgeD0iMzUwIiB5PSI3MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjlpIi8+CiAgPHJlY3QgeD0iNTAwIiB5PSI0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjEwKSIvPgogIDxyZWN0IHg9IjU1MCIgeT0iNjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iNSIgZmlsbD0idXJsKCNmaWx0ZXIxMSkiLz4KICA8cmVjdCB4PSI2MDAiIHk9IjMwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjUiIGZpbGw9InVybCgjZmlsdGVyMTIpIi8+CiAgPHJlY3QgeD0iNjUwIiB5PSI1MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjEzKSIvPgogIDxyZWN0IHg9IjUwMCIgeT0iMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iNSIgZmlsbD0idXJsKCNmaWx0ZXIxNCkiLz4KICA8cmVjdCB4PSI3MDAiIHk9IjQwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjUiIGZpbGw9InVybCgjZmlsdGVyMTUpIi8+CiAgPHJlY3QgeD0iNzUwIiB5PSI2MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjE2KSIvPgogIDxyZWN0IHg9Ijg1MCIgeT0iMzAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iNSIgZmlsbD0idXJsKCNmaWx0ZXIxNykiLz4KICA8cmVjdCB4PSI4MDAiIHk9IjUwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjUiIGZpbGw9InVybCgjZmlsdGVyMTgpIi8+CiAgPHJlY3QgeD0iOTAwIiB5PSI0MCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIHJ4PSI1IiBmaWxsPSJ1cmwoI2ZpbHRlcjE5KSIvPgogIDxyZWN0IHg9Ijc1MCIgeT0iMjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiByeD0iNSIgZmlsbD0idXJsKCNmaWx0ZXIyMCkiLz4KICA8ZmlsdGVyIGlkPSJmaWx0ZXIxIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjIiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxKSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGwtb3BhY2l0eT0iMC4xNSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9IiNmZmYiLz4KICA8ZmlsdGVyIGlkPSJmaWx0ZXIzIiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBvcGFjaXR5PSIwLjEiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSIjZmZmIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXI0KSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGwtb3BhY2l0eT0iMC4xMyIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9IiNmZmYiLz4KICA8ZmlsdGVyIGlkPSJmaWx0ZXI1IiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBvcGFjaXR5PSIwLjAyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXI2KSIgb3BhY2l0eT0iMC4wOCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8ZmlsdGVyIGlkPSJmaWx0ZXI3IiB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsdGVyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBvcGFjaXR5PSIwLjA5IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXI4KSIgb3BhY2l0eT0iMC4xMiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8ZmlsdGVyIGlkPSJmaWx0ZXI5aSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbHRlcj0idXJsKCNmaWx0ZXI5aSkiIG9wYWNpdHk9IjAuMDciIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSIjZmZmIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxMCkiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA1IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxMSkiIG9wYWNpdHk9IjAuMDciIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxMikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA2IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxMykiIG9wYWNpdHk9IjAuMDUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxNikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxNSkiIG9wYWNpdHk9IjAuMDMiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxNikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA2IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxNikiIG9wYWNpdHk9IjAuMDUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxOikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxOikiIG9wYWNpdHk9IjAuMDMiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIxMikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjA0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgogIDxmZXR1cmUgY29sb3I9IiNmZmYiIGZpbHRlcj0idXJsKCNmaWx0ZXIxOikiIG9wYWNpdHk9IjAuMDMiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGZpbHRlcj0idXJsKCNmaWx0ZXIyMikiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBvcGFjaXR5PSIwLjAyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4=
-        " 
-        alt="Diamonds Background" 
-        class="diamond-bg"
-      >
-    </div> -->
+    <div class="news-banner">
+      <div class="banner-image">
+        <img 
+          :src="bannerImage" 
+          alt="Jewelry Background" 
+          class="banner-img"
+        >
+      </div>
+    </div>
 
     <!-- 面包屑导航 -->
     <div class="breadcrumb">
@@ -56,7 +57,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { getGemById } from '@/utils/common';
+import { getGemById, getRandomBannerImage } from '@/utils/common';
+
+// FeaturedDetail页面固定使用第三张图片
+const bannerImage = getRandomBannerImage('featuredDetail');
 
 const route = useRoute();
 const router = useRouter();
@@ -82,18 +86,42 @@ const goBack = () => {
 }
 
 /* 钻石背景横幅 */
-.diamond-banner {
+.news-banner {
   width: 100%;
-  height: 120px;
+  height: 300px;
   overflow: hidden;
-  margin-bottom: 2rem;
-  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.diamond-bg {
+.banner-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.banner-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.banner-img:hover {
+  transform: scale(1.02);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .news-banner {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .news-banner {
+    height: 150px;
+  }
 }
 
 /* 面包屑导航 */

@@ -3,7 +3,7 @@
     <!-- 钻石图片横幅 -->
     <div class="news-banner">
       <div class="banner-image">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
+        <img :src="bannerImage" alt="Diamonds" class="banner-img">
       </div>
     </div>
 
@@ -49,6 +49,10 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import QRCode from 'qrcode';
+import { getRandomBannerImage } from '../utils/common';
+
+// Contact页面固定使用第六张图片
+const bannerImage = getRandomBannerImage('contact');
 
 // 二维码数据URL
 const qrCodeDataUrl = ref('');

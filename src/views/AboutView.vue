@@ -1,28 +1,38 @@
 <template>
-  <div class="about">
-    <!-- 钻石图片横幅 -->
+  <div>
+    <!-- 钻石图片横幅 - 放在容器外部，使其横向填满整个屏幕 -->
     <div class="news-banner">
       <div class="banner-image">
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=" alt="Diamonds" class="banner-img">
+        <img :src="bannerImage" alt="About" class="banner-img">
       </div>
     </div>
     
-    <!-- 装饰性标题 -->
-    <div class="about-title-container">
-      <div class="title-decoration"></div>
-      <h1 class="about-title">About</h1>
-      <div class="title-decoration"></div>
-    </div>
-    
-    <!-- 详细介绍内容 -->
-    <div class="about-content">
-      <p>The Global Gemological Research Association Institute is the standard of excellence in gemstones services worldwide since 1975. GRA reports have proven to be the internationally recognized passport for gemstones. Diamonds trade preferences throughout the world turn to GRA. Their expertise, consistency, reliability in gemstones identification grading GRA's school of gemstones has been attended by leading gemstones manufacturers, fine jewelry artisans, the public at large over ninety countries throughout the world.</p>
-      <p>The methodology employed by GRA's highly trained, experienced team of hundreds of scientific technicians, gemologists, has allowed the evaluation of the perfect formula regarding gemstone procedures, equipment, testing, grading & every security filing. GRA's state-of-the-art laboratories are located in the heart of the gem & jewelry districts throughout the world. GRA - The Standard of Excellence in gemstones. Fine Jewelry Evaluation Worldwide.</p>
+    <!-- 其他内容放在居中容器内 -->
+    <div class="about">
+      <!-- 装饰性标题 -->
+      <div class="about-title-container">
+        <div class="title-decoration"></div>
+        <h1 class="about-title">About</h1>
+        <div class="title-decoration"></div>
+      </div>
+      
+      <!-- 详细介绍内容 -->
+      <div class="about-content">
+        <p>The Global Gemological Research Association Institute is the standard of excellence in gemstones services worldwide since 1975. GRA reports have proven to be the internationally recognized passport for gemstones. Diamonds trade preferences throughout the world turn to GRA. Their expertise, consistency, reliability in gemstones identification grading GRA's school of gemstones has been attended by leading gemstones manufacturers, fine jewelry artisans, the public at large over ninety countries throughout the world.</p>
+        <p>The methodology employed by GRA's highly trained, experienced team of hundreds of scientific technicians, gemologists, has allowed the evaluation of the perfect formula regarding gemstone procedures, equipment, testing, grading & every security filing. GRA's state-of-the-art laboratories are located in the heart of the gem & jewelry districts throughout the world. GRA - The Standard of Excellence in gemstones. Fine Jewelry Evaluation Worldwide.</p>
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// 可以在这里添加关于页面的脚本逻辑
+// 例如，导入数据或定义响应式变量等
+import { getRandomBannerImage } from '../utils/common';
+
+// About页面固定使用第四张图片
+const bannerImage = getRandomBannerImage('about');
+</script>
 
 <style scoped>
 .about {

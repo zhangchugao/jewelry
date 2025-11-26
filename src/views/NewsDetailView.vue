@@ -1,9 +1,9 @@
 <template>
   <div class="news-detail">
     <!-- 钻石图片横幅 -->
-    <div class="news-detail-banner">
+    <div class="news-banner">
       <div class="banner-image">
-        <img :src="detailImage" alt="Gemstone detail" class="banner-img">
+        <img :src="bannerImage" alt="Gemstone detail" class="banner-img">
       </div>
     </div>
 
@@ -58,9 +58,13 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { getRandomBannerImage } from '../utils/common';
 
 const route = useRoute();
 const router = useRouter();
+
+// NewsDetail页面固定使用第五张图片（与News页面相同）
+const bannerImage = getRandomBannerImage('newsDetail');
 
 // 模拟新闻详情数据
 const newsDetails = ref([
@@ -110,7 +114,7 @@ const currentNews = computed(() => {
   return news || newsDetails.value[0];
 });
 
-// 钻石图片数据
+// 钻石图片数据（备用）
 const detailImage = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ1cmwoI2ltYWdlKSI+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzE4MTgwMSIgZmlsbC1vcGFjaXR5PSIwLjc1Ii8+CiAgPHJlY3QgeD0iMjUiIHk9IjIwIiB3aWR0aD0iNTAlIiBoZWlnaHQ9IjcwJSIgZmlsbD0icmdiYSgxODAsIDE2MCwgMTQwLCAwLjIpIi8+CiAgPGNpcmNsZSBjeD0iNTAlIiBjeT0iNTAlIiByPSIzMCUiIGZpbGw9InJnYmEoMjU1LCAyNTUsIDI1NSwgMC4xKSIvPgo8L3N2Zz4=';
 
 // 返回上一页
@@ -138,10 +142,10 @@ const goBack = () => {
   }
 }
 
-/* 横幅样式 */
-.news-detail-banner {
+/* 新闻详情横幅 */
+.news-banner {
   width: 100%;
-  height: 400px;
+  height: 300px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
