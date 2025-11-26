@@ -4,7 +4,8 @@
       <!-- Logo -->
       <div class="logo">
         <router-link to="/">
-          <span class="logo-text">GRA</span>
+          <img src="/vite.ico" alt="GRA Jewelry" class="logo-image" width="40" height="40" />
+          <span class="logo-text" alt="洛普林">LOPRRIN</span>
         </router-link>
       </div>
       
@@ -77,24 +78,10 @@ const closeMobileMenu = () => {
   font-weight: bold;
   color: var(--secondary-color);
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1rem;
+  vertical-align: top;
 }
 
-.logo-text::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background-color: #d4af37;
-  border-radius: 50%;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iNiIvPjwvc3ZnPg==');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 .nav-links {
   display: flex;
