@@ -76,12 +76,12 @@ export const getGemById = (id: string): Gem | undefined => {
 export const getBannerImages = (): string[] => {
   // assets/img 目录下的图片文件名
   const bannerImages = [
-    "jewelry1.png",
-    "jewelry2.png",
-    "jewelry3.png",
-    "jewelry4.png",
-    "jewelry5.png",
-    "jewelry6.png"
+    "jewelry1.jpg",
+    "jewelry2.jpg",
+    "jewelry3.jpg",
+    "jewelry4.jpg",
+    "jewelry5.jpg",
+    "jewelry6.jpg"
   ];
   
   // 使用new URL()确保Vite能正确打包图片资源
@@ -99,12 +99,12 @@ export const getBannerImages = (): string[] => {
 export const getRandomBannerImage = (pageType?: string): string => {
   // assets/img 目录下的图片文件名
   const bannerImages = [
-    "jewelry1.png",
-    "jewelry2.png",
-    "jewelry3.png",
-    "jewelry4.png",
-    "jewelry5.png",
-    "jewelry6.png"
+    "jewelry1.jpg",
+    "jewelry2.jpg",
+    "jewelry3.jpg",
+    "jewelry4.jpg",
+    "jewelry5.jpg",
+    "jewelry6.jpg"
   ];
   
   // 根据页面类型返回固定的图片

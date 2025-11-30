@@ -66,49 +66,92 @@ const router = useRouter();
 // NewsDetail页面固定使用第五张图片（与News页面相同）
 const bannerImage = getRandomBannerImage('newsDetail');
 
-// 模拟新闻详情数据
+// 定义新闻详情接口
+interface NewsItem {
+  id: number;
+  title: string;
+  description: string;
+  date: string;
+  source: string;
+  fullContent?: string;
+  additionalContent?: string;
+  // 为了兼容现有的UI，我们需要计算year和month
+  year?: string;
+  month?: string;
+}
+
+// 模拟新闻详情数据作为备用
 const newsDetails = ref([
   {
     id: 1,
-    year: '2020',
-    month: '04.02',
-    title: 'Kunzite is the best-known',
-    description: 'Aquamarine\'s name comes from the Latin seawater. It was said to calm waves and protect sailors from storms at sea. Today, it is still associated with courage, clarity, and communication.',
-    fullContent: 'The gemstone forms in large crystals, making it suitable for various jewelry applications. Its most valuable color is a pure, intense blue to slightly greenish-blue hue. Aquamarine is relatively durable, with a hardness of 7.5-8 on the Mohs scale, making it suitable for everyday wear in rings, necklaces, and earrings.',
-    additionalContent: 'Many cultures throughout history have attributed magical properties to aquamarine. It was believed to enhance intuition and foresight, and was often used by sailors as a protective talisman against the dangers of the sea. Today, it remains a popular choice for engagement rings and anniversary gifts.'
+    year: '2024',
+    month: '06.15',
+    title: 'Sustainable Jewelry Trends 2024',
+    description: 'Discover the latest sustainable practices and eco-friendly materials shaping the jewelry industry in 2024.',
+    fullContent: 'Sustainable jewelry continues to gain momentum as consumers become more environmentally conscious.',
+    additionalContent: 'Leading brands are implementing transparent supply chains and certification processes.'
   },
   {
     id: 2,
-    year: '2020',
-    month: '03.15',
-    title: 'The history of Pearls',
-    description: 'Pearls have been treasured for centuries as symbols of purity and wisdom. Unlike other gemstones, pearls are formed inside living creatures - oysters and mollusks - making them unique in the gem world.',
-    fullContent: 'Natural pearls are extremely rare and valuable, formed when an irritant accidentally enters an oyster or mollusk. Cultured pearls, developed in the late 19th century, involve the intentional insertion of a bead or piece of tissue to initiate the pearl-forming process.',
-    additionalContent: 'Pearls have been worn by royalty and nobility throughout history. In ancient Rome, pearls were considered the ultimate symbol of wealth and social status. Today, pearls continue to be highly prized for their timeless beauty and are a staple in fine jewelry collections around the world.'
+    year: '2024',
+    month: '06.10',
+    title: 'The Fascinating History of Rubies',
+    description: 'Explore the rich history, symbolism, and geological formation of one of the world\'s most precious gemstones.',
+    fullContent: 'Rubies have captivated civilizations for thousands of years as the "king of gemstones."',
+    additionalContent: 'Throughout history, rubies were believed to possess magical properties.'
   },
   {
     id: 3,
-    year: '2020',
-    month: '02.10',
-    title: 'Ruby: The King of Gemstones',
-    description: 'Rubies have been considered the king of gemstones for millennia. Their vivid red color symbolizes passion, love, and power. The finest rubies come from Myanmar, though they are also found in Thailand, Sri Lanka, and Madagascar.',
-    fullContent: 'The value of a ruby is primarily determined by its color, with the most prized being a pigeon blood red with a slight blue undertone. Rubies are composed of corundum, the same mineral as sapphires, with their red color coming from traces of chromium.',
-    additionalContent: 'Throughout history, rubies have been associated with protection, prosperity, and passion. In ancient times, warriors wore rubies into battle, believing they provided invulnerability. Today, rubies remain among the most valuable gemstones, with exceptional specimens commanding prices higher than diamonds of comparable size.'
+    year: '2024',
+    month: '06.05',
+    title: 'How to Invest in Diamonds',
+    description: 'Expert tips on evaluating, purchasing, and maintaining diamonds as an investment asset.',
+    fullContent: 'Understanding the 4Cs is essential for making informed decisions about diamond investments.',
+    additionalContent: 'Investment-grade diamonds typically have excellent cut quality and high color grades.'
   },
   {
     id: 4,
-    year: '2020',
-    month: '01.22',
-    title: 'Sapphire: Beyond Blue',
-    description: 'While sapphires are most famous for their blue varieties, they actually come in nearly every color of the rainbow. The only exception is red, which would make them rubies. Sapphires symbolize wisdom, truth, and faithfulness.',
-    fullContent: 'Blue sapphires range from light sky blue to deep royal blue, with the most valuable being a medium-deep violet-blue known as cornflower blue. Like rubies, sapphires are composed of corundum, with their color coming from traces of iron and titanium.',
-    additionalContent: 'Sapphires have a long history of use in royal jewelry. The British Crown Jewels contain several famous sapphires, including the Stuart Sapphire. Sapphires are also the traditional birthstone for September and are often used in engagement rings as an alternative to diamonds.'
+    year: '2024',
+    month: '05.28',
+    title: 'Pearl Care and Maintenance Guide',
+    description: 'Essential tips to keep your pearl jewelry looking beautiful for generations.',
+    fullContent: 'Pearls require special care to maintain their luster and beauty over time.',
+    additionalContent: 'Proper storage and cleaning can significantly extend the life of pearl jewelry.'
   }
 ]);
+
+// 从sessionStorage获取传递的新闻数据
+const getNewsFromStorage = (): NewsItem | null => {
+  try {
+    const storedNewsItem = sessionStorage.getItem('currentNewsItem');
+    if (storedNewsItem) {
+      const parsedItem = JSON.parse(storedNewsItem) as NewsItem;
+      // 计算year和month以兼容现有的UI
+      if (parsedItem.date) {
+        const date = new Date(parsedItem.date);
+        parsedItem.year = date.getFullYear().toString();
+        parsedItem.month = `${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`;
+      }
+      return parsedItem;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error parsing news from sessionStorage:', error);
+    return null;
+  }
+};
 
 // 根据路由参数获取当前新闻
 const currentNews = computed(() => {
   const id = parseInt(route.params.id as string);
+  
+  // 首先尝试从sessionStorage获取数据
+  const storedNews = getNewsFromStorage();
+  if (storedNews && storedNews.id === id) {
+    return storedNews;
+  }
+  
+  // 如果sessionStorage中没有对应ID的数据，使用备用数据
   const news = newsDetails.value.find(news => news.id === id);
   // 确保返回有效的新闻数据
   return news || newsDetails.value[0];

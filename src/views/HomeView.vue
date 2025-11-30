@@ -7,7 +7,7 @@
     <CertificateSection />
     
     <!-- 特色产品展示 -->
-    <section class="featured-section">
+    <!-- <section class="featured-section">
       <div class="container">
         <div class="section-header">
           <h2>Our Featured Collections</h2>
@@ -34,7 +34,7 @@
           <router-link to="/featured" class="view-all-btn">View All Collections</router-link>
         </div>
       </div>
-    </section>
+    </section> -->
     
     <!-- 品牌故事 -->
     <section class="about-section">
