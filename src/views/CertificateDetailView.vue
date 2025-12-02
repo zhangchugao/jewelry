@@ -95,8 +95,8 @@
               <span class="info-value">{{ gemstoneInfo.proportionsTable }}</span>
             </div>
             <div class="info-item">
-              <span class="info-label">Girdle:</span>
-              <span class="info-value">{{ gemstoneInfo.proportionsGirdle }}</span>
+              <span class="info-label">Gridle:</span>
+              <span class="info-value">{{ gemstoneInfo.proportionsGridle }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Culet:</span>
@@ -170,6 +170,7 @@ const getCertificateDetail = async () => {
   restApi.queryCertificate(certificateNumber.value).then((res: any) => {
     if (res && res.result) {
       gemstoneInfo.value = Array.isArray(res.result) ? res.result[0] : res.result;
+      console.log(111111, gemstoneInfo.value);
     }
   })
 };
