@@ -4,8 +4,8 @@
       <!-- Logo -->
       <div class="logo">
         <router-link to="/">
-          <img src="/vite.ico" alt="GRA Jewelry" class="logo-image" />
-          <span class="logo-text" alt="洛普林">LOPRRIN</span>
+          <img src="/logo.png" alt="GRA Jewelry" class="logo-image" />
+          <span class="logo-text" alt="洛普林">GRA</span>
         </router-link>
       </div>
       

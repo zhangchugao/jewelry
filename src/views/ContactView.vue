@@ -19,10 +19,10 @@
       <!-- 联系信息卡片 -->
       <div class="contact-info">
         <div class="info-content">
-          <h3 class="institution-name">GRA GLOBAL GEMOLOGICAL RESEARCH ACADEMY</h3>
-          <p class="contact-detail">Email: <a href="mailto:igra@gra.hk" class="contact-link">igra@gra.hk</a></p>
-          <p class="contact-detail">ADD: RM185 27/F HO KING COMM CTR 2-16 FAYUEN ST MONGKOK KL</p>
-          <p class="contact-detail"><a href="https://www.gramoisanitie.net" class="contact-link">https://www.gramoisanitie.net</a></p>
+          <h3 class="institution-name">Global Gemological Institute Certification Agency</h3>
+          <!-- <p class="contact-detail">Email: <a href="mailto:igra@gra.hk" class="contact-link">igra@gra.hk</a></p> -->
+          <p class="contact-detail">ADD: 2234 Pennsylvania Avenue NW, Washington, DC 20004, USA</p>
+          <p class="contact-detail"><a href="http://www.gragemorganization.com" class="contact-link">http://www.gragemorganization.com</a></p>
         </div>
 
         <!-- 二维码 -->

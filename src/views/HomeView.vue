@@ -44,9 +44,9 @@
             <h2>Our Brand Story</h2>
             <p>With decades of experience in the jewelry industry, we are committed to providing our customers with the highest quality gemstones and exquisite craftsmanship. Each piece is carefully selected and crafted to perfection, representing timeless beauty and elegance.</p>
             <p>Our mission is to create jewelry that becomes a part of your most precious memories, symbolizing love, commitment, and celebration.</p>
-            <router-link to="/about" class="learn-more-btn">Learn More</router-link>
+            <!-- <router-link to="/about" class="learn-more-btn">Learn More</router-link> -->
           </div>
-          <div class="about-image">
+          <!-- <div class="about-image">
             <div class="about-svg">
               <svg width="100%" height="100%" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="200" cy="150" r="120" fill="rgba(139, 125, 107, 0.1)"/>
@@ -57,7 +57,7 @@
                 <path d="M200 145 L210 160 L190 160 Z" fill="rgba(212, 175, 55, 0.7)"/>
               </svg>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>

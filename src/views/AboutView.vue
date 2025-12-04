@@ -18,8 +18,10 @@
       
       <!-- 详细介绍内容 -->
       <div class="about-content">
-        <p>The Global Gemological Research Association Institute is the standard of excellence in gemstones services worldwide since 1975. GRA reports have proven to be the internationally recognized passport for gemstones. Diamonds trade preferences throughout the world turn to GRA. Their expertise, consistency, reliability in gemstones identification grading GRA's school of gemstones has been attended by leading gemstones manufacturers, fine jewelry artisans, the public at large over ninety countries throughout the world.</p>
-        <p>The methodology employed by GRA's highly trained, experienced team of hundreds of scientific technicians, gemologists, has allowed the evaluation of the perfect formula regarding gemstone procedures, equipment, testing, grading & every security filing. GRA's state-of-the-art laboratories are located in the heart of the gem & jewelry districts throughout the world. GRA - The Standard of Excellence in gemstones. Fine Jewelry Evaluation Worldwide.</p>
+        <p>Since its establishment in 1993, the Global Gemological Research Association (GRA) has been recognized worldwide as the benchmark of excellence in gemstone authentication and grading services. GRA certification is regarded as the international credential for gemstone quality and provenance.</p>
+        <p>For over three decades, industry professionals across the globe have trusted GRA for its authoritative expertise, unwavering consistency, and reliable standards in gem identification. The GRA School of Gemology has educated practitioners from more than ninety countries, including gem manufacturers, master jewelers, and interested individuals, fostering knowledge and integrity within the trade.</p>
+        <p>Supported by a team of hundreds of trained gemologists and technical experts, GRA has developed a refined and systematic approach to gemstone analysis, secure documentation, and ethical handling. Its cutting-edge laboratories are strategically situated in major jewelry hubs around the world, ensuring accessibility and trust.</p>
+        <p>GRA remains the global standard in gemstone evaluation and fine jewelry assessment—where science, security, and excellence converge.</p>
       </div>
     </div>
   </div>
