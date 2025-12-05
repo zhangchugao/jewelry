@@ -171,14 +171,6 @@ onUnmounted(() => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
-.banner-btn:hover {
-  background-color: rgba(212, 175, 55, 0.9);
-  color: white;
-  border-color: rgba(212, 175, 55, 0.9);
-  transform: translateY(-50%) scale(1.15);
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-}
-
 .banner-btn:active {
   transform: translateY(-50%) scale(1.05);
 }

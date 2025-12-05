@@ -114,7 +114,6 @@ const closeMobileMenu = () => {
   transition: width 0.3s ease;
 }
 
-.nav-link:hover::after,
 .nav-link.router-link-active::after {
   width: 100%;
 }
@@ -185,6 +184,13 @@ const closeMobileMenu = () => {
 .mobile-nav-link:hover {
   background-color: #f9f9f9;
   color: var(--primary-color);
+}
+
+/* 移动版导航链接的路由激活状态 */
+.mobile-nav-link.router-link-active {
+  background-color: #f9f9f9;
+  color: var(--primary-color);
+  font-weight: 600;
 }
 
 /* 响应式设计 */

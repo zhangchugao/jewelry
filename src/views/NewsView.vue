@@ -124,72 +124,72 @@ const fetchNews = async () => {
 
 // 模拟新闻API数据
 const simulateNewsApi = () => {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear().toString();
-  const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+  // 为每个新闻项计算正确的日期
+  const calculateNewsDate = (daysAgo: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() - daysAgo);
+    
+    const year = date.getFullYear().toString();
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    
+    return { year, month: `${month}.${day}` };
+  };
   
   // Using jewelry-related mock news data - with more article content
   newsItems.value = [
     {
       id: 1,
-      year: currentYear,
-      month: `${currentMonth}.${currentDate.getDate().toString().padStart(2, '0')}`,
+      ...calculateNewsDate(0),
       title: '2024 Jewelry Trends: Natural Elements and Sustainable Design',
       description: 'This year\'s jewelry design trends emphasize harmony with nature, utilizing organic shapes and eco-friendly materials extensively. Designers are reducing carbon footprint through innovative craftsmanship while maintaining luxury and artistic value. Natural gemstones like sapphires, emeralds, and pearls take center stage, symbolizing purity and eternity.',
       source: 'Jewelry Trends Magazine'
     },
     {
       id: 2,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 1).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(1),
       title: 'Ruby Legends: From Ancient Royalty to Modern Collections',
       description: 'Rubies have long been treasured for their vivid red color and rarity, historically favored by royalty and nobility. This article delves into ruby formation processes, major sources, and how to identify high-quality rubies. Additionally, it showcases several famous ruby jewelry pieces and the stories behind them.',
       source: 'Gemological Research'
     },
     {
       id: 3,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 2).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(2),
       title: 'Diamond Investment Guide: Choosing Diamonds with Appreciation Potential',
       description: 'Diamonds are not only beautiful adornments but also a valuable investment choice. This article provides professional diamond investment advice, including detailed explanations of the 4C standard (color, clarity, cut, and carat weight), as well as market performance analysis of different diamond types. Experts recommend focusing on rare colored diamonds for long-term investment value.',
       source: 'Wealth Jewelry Advisors'
     },
     {
       id: 4,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 3).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(3),
       title: 'Complete Pearl Care Guide: Keeping Your Pearl Jewelry Beautiful',
       description: 'As organic gemstones, pearls require special care to maintain their luster and beauty. This article provides detailed pearl cleaning, storage, and wearing recommendations, including avoiding chemical exposure, the importance of regular professional maintenance, and how to identify signs that your pearl jewelry needs repair. Proper care can make pearl jewelry last for generations.',
       source: 'Jewelry Care Experts'
     },
     {
       id: 5,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 4).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(4),
       title: 'Modern Women\'s Jewelry Collection: Creating a Unique and Meaningful Jewelry Box',
       description: 'Modern women\'s jewelry collections are more than just symbols of wealth—they reflect personal style and life stories. This article shares how to build a diverse jewelry collection based on personal style, occasion needs, and budget, including essential basics and heirloom-quality pieces. Experts recommend choosing versatile jewelry that adapts to different styles.',
       source: 'Fashion & Life'
     },
     {
       id: 6,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 5).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(5),
       title: 'Exploring Sapphires: Beyond Blue to Stunning Colors',
       description: 'While sapphires are famous for their deep blue, the sapphire family actually offers rich color variations, from pink and yellow to green, and even colorless. This article introduces the causes, source characteristics, and market value comparisons of different colored sapphires. It particularly recommends Padparadscha sapphires (pink-orange) as an emerging collection hotspot.',
       source: 'Colored Gem Appreciation'
     },
     {
       id: 7,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 6).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(6),
       title: 'The Allure of Custom Jewelry: A Unique Personalized Experience',
       description: 'Custom jewelry provides the opportunity to incorporate personal stories and emotions into accessories. This article describes the complete custom jewelry process, from creative concept and design sketches to material selection and production, as well as how to effectively communicate with designers to achieve the desired result. Custom jewelry is not just an ornament but a precious heirloom carrying special memories.',
       source: 'Private Custom Jewelry'  
     },
     {
       id: 8,
-      year: currentYear,
-      month: `${currentMonth}.${(currentDate.getDate() - 7).toString().padStart(2, '0')}`,
+      ...calculateNewsDate(7),
       title: 'Natural vs. Synthetic Gemstones: How to Distinguish and Choose Wisely',
       description: 'With advancing technology, synthetic and natural gemstones are becoming increasingly difficult to distinguish. This article provides professional identification methods, including visual characteristics and professional testing techniques. It also analyzes the value differences, advantages and disadvantages of natural versus synthetic gemstones, and how to make the most suitable choice based on personal needs and budget.',
       source: 'Gemstone Identification & Evaluation'

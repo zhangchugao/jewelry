@@ -170,7 +170,6 @@ const getCertificateDetail = async () => {
   restApi.queryCertificate(certificateNumber.value).then((res: any) => {
     if (res && res.result) {
       gemstoneInfo.value = Array.isArray(res.result) ? res.result[0] : res.result;
-      console.log(111111, gemstoneInfo.value);
     }
   })
 };
